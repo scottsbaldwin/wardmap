@@ -1,0 +1,192 @@
+WARD MAP GENERATOR
+
+# --------------------------------------------------
+# Usage
+# --------------------------------------------------
+
+Run the map.rb script using the ruby interpreter on 
+the command line, as below:
+
+$ ruby map.rb
+
+This command will generate two files, a normal map
+without categorization of households, and a
+confidential map listing categories for each
+household.
+
+The file names can be customized, see the section
+on customization below (map.config).
+
+# --------------------------------------------------
+# Map Image
+# --------------------------------------------------
+
+The image of the map is provided by the file 
+WardMap.jpg. Simply place a new file with that name
+in the directory and it will be used as the
+watermark to the positioned labels. The map is
+declared in HTML as:
+
+<div id="watermark"><img src="WardMap.jpg"/></div>
+
+And is positioned/styled with CSS as:
+
+#watermark {
+        opacity: 1.0;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        z-index: 0;
+}
+
+# --------------------------------------------------
+# Directory
+# --------------------------------------------------
+
+The directory.txt file contains a comma-separated
+list of households to place on your map. Each line
+of the file contains 4 fields, separated by a comma.
+
+The fields are:
+
+1. ID number for the house on your map
+2. Street address, e.g. 123 W
+3. Surname of household
+4. Category of household
+
+Possible values for categories are:
+
+A (Aspen ward)
+S (Spanish speaking)
+L (Less-active)
+N (Not a member)
+P (Part-member)
+U (Unknown)
+
+If more than one category applies to a household,
+combine the category identifier (the single
+character) of each category. For example, a 
+household that is Spanish-speaking, attends the
+Aspen ward, and is less-active, use ASL.
+
+# --------------------------------------------------
+# Grid
+# --------------------------------------------------
+
+The grid.txt file contains the positioning 
+information used to layout households on the map.
+Each line is a comma-separated list of the following
+fields:
+
+1. ID number for the house on your map, correlates
+   to the ID number in directory.txt
+2. The X-coordinate, or left position of that
+   household's label
+3. The Y-coordinate, or top position of that
+   household's label
+4. The width of that household's label
+5. The height of that household's label
+6. An optional alignment indicator for the text
+   of that household's label. Possible values
+   are left, center, and right. If omitted,
+   center is assumed.
+
+For example, the following line:
+
+14,340,225,35,30,right
+
+has the following fields:
+
+1. An ID of 14
+2. A left position of 340px
+3. A top position of 225px
+4. A width of 35px
+5. A height of 30px
+6. Text aligned to the right edge of the label box
+
+# --------------------------------------------------
+# Customization
+# --------------------------------------------------
+
+- map.config -------
+
+Open the map.config file and set values for the 
+configuration options.
+
+:ward_name is the name of your ward
+
+:output_file_normal is the name of the file that will 
+get generated excluding the categories attached
+to each house, e.g. less active, part-member, etc.
+
+:output_file_confidential is the name of the file
+that will get generated that includes categories
+being attached to each house
+
+- template.html -------
+
+The template.html file contains the base template
+used when generating your output file. The template
+contains key words that get replaced with generated
+content.
+
+WARD_NAME gets replaced with the :ward_name configuration
+value in map.config
+
+STYLE_LABELS gets repaced with CSS to control positioning
+of the HTML elements for each house
+
+HTML_LABELS gets replaced with the HTML for all the
+houses, including name, street address, number on map,
+and category of family
+
+GENERATED_DATE gets replaced with the current date,
+e.g. December 18, 2011
+
+Street labels are placed on the map using HTML DIV
+elements. CSS positioning is used to place the labels
+in the correct position on the map. 
+
+Streets are placed on the map using an HTML DIV, e.g.
+
+<div id="street980west">980 West</div>
+
+The positioning is part of the CSS, using the ID
+attribute from the DIV:
+
+#street980west {
+        top: 83px;
+        left: 240px;
+}
+
+Additionally, some labels are rotated 90 degrees 
+counter-clockwise. The position and rotation are
+done with separate CSS elements to allow the
+designation of all rotated elements in the same
+CSS rule.
+
+#street1200north {
+        top: 500px;
+        left: 68px;
+}
+
+#street1200north, #street1140north, #street1130north, #street1100north {
+        -webkit-transform: rotate(-90deg);
+        -moz-transform: rotate(-90deg);
+}
+
+The Church label is an HTML div. Change the address
+directly in the HTML.
+
+<div id="church" class="household"><div class="name">Church</div><div class="street">1075 W</div></div>
+
+Customize the church label's position using the #church
+rule in CSS:
+
+#church {
+        top: 460px;
+        left: 490px;
+}
+
+If the #church element needs to be rotated 90 degrees, add
+#church to the comma-separated list of rotated CSS rules

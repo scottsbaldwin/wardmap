@@ -1,0 +1,182 @@
+<html>
+<head>
+<title>WARD_NAME Map</title>
+<style>
+body {
+	font-family: Arial,sans-serif;
+}
+
+.A,.L,.N,.P,.S,.U { font-family: monospace; font-size: 6.5pt; padding: 1px; margin-right: 1px; color: white; text-align: center; }
+.A { background-color: purple; }
+.L { background-color: blue; }
+.N { background-color: green; }
+.P { background-color: orange; }
+.S { background-color: purple; }
+.U { background-color: red; }
+
+#legend {
+	z-index: 1000;
+	background-color: #eee;
+	border: 2px solid black;
+	position: absolute;
+	left: 500;
+	top: 50px;
+	padding: 10px;
+	font-size: 10pt;
+}
+
+#watermark {
+	opacity: 1.0;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	z-index: 0;
+}
+
+.labels {
+	font-size: 6.5pt;
+}
+
+.household {
+	text-align: center;
+}
+
+.household .name {
+	position: relative;
+}
+
+.household .street {
+	position: relative;
+}
+
+#street1200north, #street1140north, #street1130north, #street1100north {
+	-webkit-transform: rotate(-90deg);
+	-moz-transform: rotate(-90deg);
+}
+
+#street1200north, #street1140north, #street1130north, #street1100north, #street980west, #street1015west, #street1035west, #street1050west, #street1080west, #street1125west, #street1160west, #street1165west, #street1200west, #church {
+	position: absolute;
+	z-index: 120;
+	font-size: 8pt;
+	border: 1px solid black;
+	padding: 2px;
+	background-color: white;
+}
+
+#street980west {
+	top: 83px;
+	left: 240px;
+}
+
+#street1015west {
+	top: 230px;
+	left: 110px;
+}
+
+#street1035west {
+	top: 318px;
+	left: 455px;
+}
+
+#street1050west {
+	top: 368px;
+	left: 240px;
+}
+
+#street1080west {
+	top: 494px;
+	left: 240px;
+}
+
+#street1125west {
+	top: 625px;
+	left: 240px;
+}
+
+#street1160west {
+	top: 722px;
+	left: 455px;
+}
+
+#street1165west {
+	top: 745px;
+	left: 240px;
+}
+
+#street1200west {
+	top: 895px;
+	left: 240px;
+}
+
+#street1200north {
+	top: 500px;
+	left: 68px;
+}
+
+#street1140north {
+	top: 320px;
+	left: 295px;
+}
+
+#street1130north {
+	top: 570px;
+	left: 288px;
+}
+
+#street1100north {
+	top: 500px;
+	left: 405px;
+}
+
+#church {
+	top: 460px;
+	left: 490px;
+}
+
+STYLE_LABELS
+
+</style>
+</head>
+<body>
+
+<div id="page">
+	<div id="watermark"><img src="WardMap.jpg"/></div>
+	<div class="labels">
+
+HTML_LABELS
+
+	<div id="gridpaper" style="display:none"></div>
+	</div>
+</div>
+
+<div id="street980west">980 West</div>
+<div id="street1015west">1015 West</div>
+<div id="street1035west">1035 West</div>
+<div id="street1050west">1050 West</div>
+<div id="street1080west">1080 West</div>
+<div id="street1125west">1125 West</div>
+<div id="street1160west">1160 West</div>
+<div id="street1165west">1165 West</div>
+<div id="street1200west">1200 West</div>
+<div id="street1200north">1200 North</div>
+<div id="street1140north">1140 North</div>
+<div id="street1130north">1130 North</div>
+<div id="street1100north">1100 North</div>
+<div id="church" class="household"><div class="name">Church</div><div class="street">1075 W</div></div>
+
+<div id="legend">
+<strong>WARD_NAME</strong><br/>
+Updated: GENERATED_DATE<br/><br/>
+<div class="categories">
+<span class="A">A</span> (A) Aspen ward</span><br/>
+<span class="S">S</span> (S) Spanish speaking</span><br/>
+<span class="L">L</span> (L) Less-active</span><br/>
+<span class="N">N</span> (N) Not a member</span><br/>
+<span class="P">P</span> (P) Part-member</span><br/>
+<span class="U">U</span> (U) Unknown</span><br/>
+</div>
+</div>
+
+</body>
+</html>
+
